@@ -49,7 +49,7 @@ public class FileInputOutput {
 	void fileOutput(String filename, int[] array) {
 		file.setWritable(true);
 		try {
-			FileWriter fileWriter = new FileWriter("C:/Users/ciyeh/Desktop/3학년/알고리즘/실습/"+filename+".txt");
+			FileWriter fileWriter = new FileWriter("C:/Users/예부해/Desktop/알고리즘/실습/1week/"+filename+".txt");
 			for(int i = 0; i < size+1; i++) {
 				String data = Integer.toString(array[i]);
 				if(i != size) {
@@ -68,7 +68,7 @@ public class FileInputOutput {
 	void fileOutput(String filename, int[] array, int count) {
 		file.setWritable(true);
 		try {
-			FileWriter fileWriter = new FileWriter("C:/Users/ciyeh/Desktop/3학년/알고리즘/실습/"+filename+".txt");
+			FileWriter fileWriter = new FileWriter("C:/Users/예부해/Desktop/알고리즘/실습/1week/"+filename+".txt");
 			for(int i = 0; i < size+1; i++) {
 				String data = Integer.toString(array[i]);
 				if(i != size) {
