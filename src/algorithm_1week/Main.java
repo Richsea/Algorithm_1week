@@ -6,7 +6,7 @@ public class Main {
 	public static void main(String[] args){
 		int[] insertionArray, binaryInsertionArray, MergeSortArray, MergeSort_3sublistArray;
 					
-		File file = new File("C:/Users/ciyeh/Desktop/3학년/알고리즘/실습/data02.txt");
+		File file = new File("C:/Users/예부해/Desktop/알고리즘/실습/1week/data02.txt");
 		FileInputOutput fileIO = new FileInputOutput(file);
 		insertionArray = fileIO.readFile();
 		binaryInsertionArray = fileIO.readFile();

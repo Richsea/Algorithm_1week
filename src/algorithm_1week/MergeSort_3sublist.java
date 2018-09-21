@@ -117,6 +117,7 @@ public class MergeSort_3sublist {
 		}
 		while(highStart < arrayHigh.length) {
 			array[sortLocation] = arrayHigh[highStart];
+			sortLocation++;
 			highStart++;
 		}
 		return array;
