@@ -14,10 +14,11 @@ public class FileInputOutput {
 	File file;
 	int fileCheck = 0;
 	int size = 0;
-	int[] array = new int[100];
+	int[] array;
 	int[] resizeArray;
-	
 	int[] readFile() {
+		array = new int[100];
+		size = 0;
 		FileReader fileReader;
 		file.setReadOnly();
 		
@@ -45,16 +46,16 @@ public class FileInputOutput {
 		return resizeArray;
 	}
 	
-	boolean fileOutput() {
+	void fileOutput(String filename, int[] array) {
 		file.setWritable(true);
 		try {
-			FileWriter fileWriter = new FileWriter("C:/Users/ciyeh/Desktop/3학년/알고리즘/실습/data02_sort.txt");
+			FileWriter fileWriter = new FileWriter("C:/Users/ciyeh/Desktop/3학년/알고리즘/실습/"+filename+".txt");
 			for(int i = 0; i < size+1; i++) {
-				String data = Integer.toString(resizeArray[i]);
+				String data = Integer.toString(array[i]);
 				if(i != size) {
 					data += ',';
 				}else {
-					data = Integer.toString(resizeArray[i]);
+					data = Integer.toString(array[i]);
 				}
 				fileWriter.write(data);
 			}
@@ -62,6 +63,25 @@ public class FileInputOutput {
 		} catch (IOException e) {
 			System.out.print(e);
 		}
-		return true;
+	}
+	
+	void fileOutput(String filename, int[] array, int count) {
+		file.setWritable(true);
+		try {
+			FileWriter fileWriter = new FileWriter("C:/Users/ciyeh/Desktop/3학년/알고리즘/실습/"+filename+".txt");
+			for(int i = 0; i < size+1; i++) {
+				String data = Integer.toString(array[i]);
+				if(i != size) {
+					data += ',';
+				}else {
+					data = Integer.toString(array[i]);
+				}
+				fileWriter.write(data);
+			}
+			fileWriter.write("\r\n※정렬결과" + Integer.toString(count));
+			fileWriter.close();
+		} catch (IOException e) {
+			System.out.print(e);
+		}
 	}
 }

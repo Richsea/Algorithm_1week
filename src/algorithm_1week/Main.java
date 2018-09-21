@@ -4,35 +4,42 @@ import java.io.File;
 
 public class Main {
 	public static void main(String[] args){
-		int fileCheck = 0;
-		int size = 0;
-		int[] array;
-		int[] insertionArray;
-		int[] binaryInsertionArray;
-		
+		int[] insertionArray, binaryInsertionArray, MergeSortArray, MergeSort_3sublistArray;
+					
 		File file = new File("C:/Users/ciyeh/Desktop/3학년/알고리즘/실습/data02.txt");
-		
 		FileInputOutput fileIO = new FileInputOutput(file);
-		array = fileIO.readFile();
-		size = array.length;
+		insertionArray = fileIO.readFile();
+		binaryInsertionArray = fileIO.readFile();
+		MergeSortArray = fileIO.readFile();
+		MergeSort_3sublistArray = fileIO.readFile();
 		
-		insertionArray = new int[size+1];
-		binaryInsertionArray = new int[size+1];
+		Insertion insertion = new Insertion(insertionArray);
+		long start = System.nanoTime();
+		insertionArray = insertion.compare();
+		long end = System.nanoTime();
+		System.out.println("Insertion 실행시간: " + (end-start) + "ns");
 		
-		doSort(array);
+		BinaryInsertionSort binaryInsertion = new BinaryInsertionSort(binaryInsertionArray);
+		start = System.nanoTime();
+		binaryInsertionArray = binaryInsertion.compare();
+		end = System.nanoTime();
+		System.out.println("binary_Insertion 실행시간: " + (end-start) + "ns");
 		
-		fileIO.fileOutput();
-	}
-	
-	static void doSort(int[] array) {
-		BinaryInsertionSort binaryInsertion = new BinaryInsertionSort(array);
-		binaryInsertion.compare();
+		MergeSort mergeSort = new MergeSort(MergeSortArray);
+		start = System.nanoTime();
+		MergeSortArray = mergeSort.doMergeSort();
+		end = System.nanoTime();
+		System.out.println("Merge 실행시간: " + (end-start) + "ns");
 		
-		Insertion insertion = new Insertion(array);	//Insertion이 확인할 파일의 크기를 확인하는 것이 중요
-		array = insertion.compare();
-		/*
-		BinaryInsertionSort binaryInsertion = new BinaryInsertionSort(resizeArray);
-		binaryInsertion.compare();
-		*/
+		MergeSort_3sublist sublistSort = new MergeSort_3sublist(MergeSort_3sublistArray);
+		start = System.nanoTime();
+		MergeSort_3sublistArray = sublistSort.doMergeSort_3sublist();
+		end = System.nanoTime();
+		System.out.println("Merge_3way 실행시간: " + (end-start) + "ns");
+		
+		fileIO.fileOutput("hw01_00_201402377_insertion" ,insertionArray);
+		fileIO.fileOutput("hw01_00_201402377_binary_insertion", binaryInsertionArray);
+		fileIO.fileOutput("hw01_00_201402377_merge", MergeSortArray, mergeSort.mergeCount());
+		fileIO.fileOutput("hw01_00_201402377_3way_merge", MergeSort_3sublistArray, sublistSort.mergeCount());
 	}
 }
